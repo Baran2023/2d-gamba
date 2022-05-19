@@ -11,6 +11,7 @@ public class PurpLife : MonoBehaviour
 
     private void Start()
     {
+
         anim = GetComponent<Animator>();
     }
 

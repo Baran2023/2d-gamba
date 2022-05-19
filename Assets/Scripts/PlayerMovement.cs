@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim;
     private bool grounded;
+    public Camera cam;
+    public Vector2 mouse;
 
     private void Awake()
     {
@@ -16,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        
+
+        Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+
+
         float horozontalInput = Input.GetAxis("Horizontal");
         body.velocity = new Vector2(horozontalInput * speed, body.velocity.y);
 
@@ -32,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetBool("run", horozontalInput != 0);
         anim.SetBool("grounded", grounded);
+
+        GrappleHook();
     }
 
 
@@ -52,15 +59,15 @@ public class PlayerMovement : MonoBehaviour
         else
             grounded = false;
 
-    //    if (collision.gameObject.tag == "die")
-    //    { transform.position = new Vector3(-7, -3, -10); }
+
 
     }
     
     private void GrappleHook()
     {
-        if(Input.GetMouseButton(0))
-            body.velocity = new Vector2.MoveTowards(GameObject.FindGameObjectsWithTag("Player")[0].transform.position, Input.mousePosition); 
+        if (Input.GetMouseButton(0))
+            mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+            body.MovePosition(Vector2.MoveTowards(transform.position, mouse ,Time.deltaTime * speed));
     }
 
 }

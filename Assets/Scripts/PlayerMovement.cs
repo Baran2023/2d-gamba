@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        
         float horozontalInput = Input.GetAxis("Horizontal");
         body.velocity = new Vector2(horozontalInput * speed, body.velocity.y);
 
@@ -27,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && grounded)
             Jump();
-
      
 
         anim.SetBool("run", horozontalInput != 0);
@@ -56,7 +56,11 @@ public class PlayerMovement : MonoBehaviour
     //    { transform.position = new Vector3(-7, -3, -10); }
 
     }
-
-
+    
+    private void GrappleHook()
+    {
+        if(Input.GetMouseButton(0))
+            body.velocity = new Vector2.MoveTowards(GameObject.FindGameObjectsWithTag("Player")[0].transform.position, Input.mousePosition); 
+    }
 
 }

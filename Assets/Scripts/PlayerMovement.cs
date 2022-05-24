@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim;
     private bool grounded;
-    public Camera cam;
+   [SerializeField] public Camera cam;
     public Vector2 mouse;
 
     private void Awake()
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
         //get refrences froom game obj
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        // cam = GetComponent<Camera>();
     }
 
     private void Update()
@@ -38,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("run", horozontalInput != 0);
         anim.SetBool("grounded", grounded);
 
-        GrappleHook();
+        if (Input.GetMouseButton(0))
+            GrappleHook();
     }
 
 
@@ -65,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void GrappleHook()
     {
-        if (Input.GetMouseButton(0))
             mouse = cam.ScreenToWorldPoint(Input.mousePosition);
             body.MovePosition(Vector2.MoveTowards(transform.position, mouse ,Time.deltaTime * speed));
     }

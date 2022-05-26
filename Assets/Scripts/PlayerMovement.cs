@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("grounded", grounded);
         
         bool reach;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && grounded)
             mouseClicked = Input.mousePosition;
             reach = false;
         GrappleHook(mouseClicked, reach);
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     private void GrappleHook(Vector2 mouseClick, bool reached)
     {
             mouse = cam.ScreenToWorldPoint(mouseClick);
-            if (!(cam.transform.position.Equals(mouseClick)) && !reached)
+            if (!(cam.transform.position.Equals(mouseClick)) && (!reached))
                 body.MovePosition(Vector2.MoveTowards(transform.position, mouse,Time.deltaTime * speed * 3));
             if (cam.transform.position.Equals(mouseClick))
                 reached = true;

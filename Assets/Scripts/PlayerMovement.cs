@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -60,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
             grounded = true;
         else
             grounded = false;
+
+        if(collision.gameObject.tag == "Win")
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if (collision.gameObject.tag == "die")
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 
 
 

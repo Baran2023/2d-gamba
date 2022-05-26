@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - die
+  - Win
   layers:
   - Default
   - TransparentFX

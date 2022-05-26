@@ -75,7 +75,8 @@ public class PlayerMovement : MonoBehaviour
     private void GrappleHook()
     {
             mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-            body.MovePosition(Vector2.MoveTowards(transform.position, mouse,Time.deltaTime * speed * 2));
+            while (body.getPosition() != Input.mousePosition)
+                body.MovePosition(Vector2.MoveTowards(transform.position, mouse,Time.deltaTime * speed * 2));
     }
 
 }

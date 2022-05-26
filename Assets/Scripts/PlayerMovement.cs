@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("run", horozontalInput != 0);
         anim.SetBool("grounded", grounded);
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
             GrappleHook();
     }
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     private void GrappleHook()
     {
             mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-            body.MovePosition(Vector2.MoveTowards(transform.position, mouse ,Time.deltaTime * speed));
+            body.MovePosition(Vector2.MoveTowards(transform.position, mouse,Time.deltaTime * speed * 2));
     }
 
 }

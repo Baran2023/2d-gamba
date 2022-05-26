@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
             mouseClick = Input.mousePosition;
             bool reached = false;
-        GrappleHook(mouseClick);
+        GrappleHook(mouseClick, reached);
         
     }
 

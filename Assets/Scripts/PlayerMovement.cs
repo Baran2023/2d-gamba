@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
    [SerializeField] public Camera cam;
     public Vector2 mouse;
-    private Vector2 mouseClicked = new Vector2(0.0f,0.0f);
+    private Vector2 mouseClicked = new Vector2(-0.02f,0.01f);
 
     private void Awake()
     {
@@ -80,9 +80,9 @@ public class PlayerMovement : MonoBehaviour
     private void GrappleHook(Vector2 mouseClick, bool reached)
     {
             mouse = cam.ScreenToWorldPoint(mouseClick);
-            if (!(cam.transform.position.equals(mouseClick)) && !reached)
+            if (!(cam.transform.position.Equals(mouseClick)) && !reached)
                 body.MovePosition(Vector2.MoveTowards(transform.position, mouse,Time.deltaTime * speed * 3));
-            if (cam.transform.position.equals(mouseClick))
+            if (cam.transform.position.Equals(mouseClick))
                 reached = true;
     }
 

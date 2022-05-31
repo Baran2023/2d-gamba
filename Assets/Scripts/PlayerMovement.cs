@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim;
     private bool grounded;
-   [SerializeField] public Camera cam;
-    public Vector2 mouse;
+  // [SerializeField] public Camera cam;
+   // public Vector2 mouse;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+      //  Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
 
 
         float horozontalInput = Input.GetAxis("Horizontal");
@@ -40,11 +40,11 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("run", horozontalInput != 0);
         anim.SetBool("grounded", grounded);
 
-        if (Input.GetMouseButtonDown(0))
-            mouseClick = Input.mousePosition;
-            bool reached = false;
-        GrappleHook(mouseClick, reached);
-        
+     //   if (Input.GetMouseButtonDown(0))
+     //       mouseClick = Input.mousePosition;
+     //       bool reached = false;
+     //   GrappleHook(mouseClick, reached); 
+     
     }
 
 
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-    
+   /* 
     private void GrappleHook(Vector2 mouseClick, bool reached)
     {
             mouse = cam.ScreenToWorldPoint(mouseClick);
@@ -83,5 +83,5 @@ public class PlayerMovement : MonoBehaviour
             if (cam.transform.position == mouseClick)
                 reached = true;
     }
-
+   */
 }

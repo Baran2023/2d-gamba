@@ -12,7 +12,6 @@ public class Grapple : MonoBehaviour
     private DistanceJoint2D _distanceJoint;
     private LineRenderer _lineRenderer;
     private Vector3 _TempPos;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +26,10 @@ public class Grapple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         GetMousePos(); 
-        if(Input.GetMouseButtonDown(0) && _check)
+        if(Input.GetMouseButtonDown(0) && _check )
         {
             _distanceJoint.enabled = true;
             _distanceJoint.connectedAnchor = _mousePos;
